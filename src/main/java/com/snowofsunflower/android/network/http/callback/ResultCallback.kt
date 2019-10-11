@@ -14,6 +14,7 @@ import java.net.UnknownServiceException
 
 /**
  * Created by zhouztashin on 2018/11/2.
+ * 网络访问回调处理
  */
 abstract class ResultCallback<T> : Callback<T> {
 
@@ -25,13 +26,10 @@ abstract class ResultCallback<T> : Callback<T> {
                 if (result != null) {
                     success(result, response)
                 } else {
-                    //根据Kotlin语法优化
-                    var errorMsg: String? = ErrorMessage.PROTOCOL_ERROR
-                    if (response.errorBody() != null) {
-                        errorMsg = response.errorBody()?.string()
+                    var errorMsg: String? = response.errorBody()?.string()?.let {
+                        ErrorMessage.PROTOCOL_ERROR
                     }
                     failure(ErrorCode.PROTOCOL_ERROR, errorMsg)
-
                 }
             } else {
                 failure(ErrorCode.HTTP_RESPONSE_ERROR,

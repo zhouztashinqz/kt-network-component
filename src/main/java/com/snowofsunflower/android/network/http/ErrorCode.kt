@@ -1,5 +1,8 @@
 package com.snowofsunflower.android.network.http
 
+/**
+ * 网络访问错误码
+ */
 enum class ErrorCode(val code: Int) {
     PROTOCOL_ERROR(-120), //协议解析错误
     JAVA_EXCEPTION(-130),//Java异常错误

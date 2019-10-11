@@ -1,7 +1,7 @@
 package com.snowofsunflower.android.network.http
 
 /**
- * 服务器错误信息
+ * 网络访问错误文本信息
  */
 class ErrorMessage {
     companion object {
